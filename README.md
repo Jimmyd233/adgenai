@@ -116,4 +116,3 @@ For questions or academic evaluation, please reach out to:
 **Student Name:** DING Haoran  
 **Project:** Personalized Ads AI Intelligent Generation  
 **Institution:** City University of Hong Kong
-**Email:** haorading3-c@my.cityu.edu.hk
