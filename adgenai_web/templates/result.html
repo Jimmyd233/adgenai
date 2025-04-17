@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Ad GenAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- 返回按钮 -->
+        <a href="/" class="back-btn">&laquo; Go Back and Regenerate</a>
+
+        <h1>Results Preview</h1>
+
+        <!-- 主要内容区域 -->
+        <div class="result-sections">
+            <!-- 广告文案区块 -->
+            <div class="form-section">
+                <h2>Copywriting</h2>
+                <div class="result-card">
+                    <div class="copy-content">
+                        {{ ad_copy }}
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard()">Copy</button>
+                </div>
+            </div>
+
+            <!-- 广告图像区块 -->
+            <div class="form-section">
+                <h2>Ad Picture</h2>
+                <div class="result-card">
+                    {% if image_url %}
+                    <img src="{{ image_url }}" alt="Generated Ad Picture" class="ad-image">
+                    <div class="image-actions">
+                        <button onclick="downloadImage('{{ image_url }}')">Download</button>
+                        <button onclick="regenerateImage()">Regenerate</button>
+                    </div>
+                    {% else %}
+                    <p class="error-msg">Picture Generation Failed</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- 调试信息区块 -->
+            <div class="form-section">
+                <h2>Techinical Details <button type="button" class="toggle-btn" onclick="toggleTechDetails()">Show</button></h2>
+                <div class="tech-details" style="display:none;">
+                    <div class="detail-item">
+                        <label>Time Taken: </label>
+                        <span>{{ elapsed_time }}Seconds</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Picture Prompt</label>
+                        <pre class="prompt-box">{{ image_prompt }}</pre>
+                    </div>
+                    <div class="detail-item">
+                        <label>Model: </label>
+                        <span>DeepSeek-Chat 7B / Stable Diffusion XL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 通用交互函数
+        function toggleTechDetails() {
+            const details = document.querySelector('.tech-details');
+            const btn = document.querySelector('.toggle-btn');
+            const isVisible = details.style.display === 'block';
+            
+            details.style.display = isVisible ? 'none' : 'block';
+            btn.textContent = isVisible ? 'Show' : 'Hide';
+        }
+
+        function copyToClipboard() {
+            navigator.clipboard.writeText(`{{ ad_copy }}`)
+                .then(() => alert('Copied'))
+                .catch(err => console.error('Copy Failed:', err));
+        }
+
+        function downloadImage(url) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `ad-${Date.now()}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function regenerateImage() {
+            if(confirm('Do you comfirm to regenerate?')) {
+                window.location.reload();
+            }
+        }
+    </script>
+</body>
+</html>

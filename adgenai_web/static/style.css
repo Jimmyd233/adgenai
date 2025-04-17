@@ -1,0 +1,208 @@
+/* 基础样式 */
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background: #f5f7fa;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #2d8cf0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 表单样式 */
+.form-section {
+    border: 1px solid #e8e8e8;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-group label {
+    width: 120px;
+    font-weight: 500;
+    color: #333;
+}
+
+input[type="text"], 
+textarea,
+select {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* 高级选项 */
+.advanced-options {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #eee;
+}
+
+.toggle-label {
+    cursor: pointer;
+    color: #2d8cf0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 生成按钮 */
+.generate-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #2d8cf0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.generate-btn:hover {
+    background: #1e6ebf;
+}
+
+.generate-btn .spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+/* 结果页特定样式 */
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #2d8cf0;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.result-sections {
+    margin-top: 30px;
+}
+
+.result-card {
+    border: 1px solid #e8e8e8;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+    background: #fff;
+}
+
+.copy-content {
+    line-height: 1.8;
+    color: #333;
+    white-space: pre-wrap;
+    margin-bottom: 15px;
+}
+
+.copy-btn {
+    background: #2d8cf0;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.copy-btn:hover {
+    background: #1e6ebf;
+}
+
+.image-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.image-actions button {
+    flex: 1;
+    padding: 8px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.image-actions button:hover {
+    background: #e9ecef;
+}
+
+.tech-details {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.detail-item {
+    margin: 10px 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.detail-item label {
+    width: 120px;
+    font-weight: 500;
+    color: #666;
+}
+
+.prompt-box {
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.error-msg {
+    color: #dc3545;
+    padding: 10px;
+    background: #fff5f5;
+    border-radius: 4px;
+}
+
+.toggle-btn {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    margin-left: 10px;
+    vertical-align: middle;
+}

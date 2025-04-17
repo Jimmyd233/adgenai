@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad GenAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Ad GenAI</h1>
+        
+        <form method="POST" class="ad-form">
+            <!-- 基础信息 -->
+            <div class="form-section">
+                <h2>Product Information</h2>
+                
+                <div class="form-group">
+                    <label>Product Name: </label>
+                    <input type="text" name="product" required placeholder="Please provide name">
+                </div>
+
+                <div class="form-group">
+                    <label>Product Description: </label>
+                    <textarea name="description" rows="3" required placeholder="Please provide detailed product description and advantages"></textarea>
+                </div>
+            </div>
+
+            <!-- 广告策略 -->
+            <div class="form-section">
+                <h2>Ad Strategy</h2>
+                
+                <div class="form-group">
+                    <label>Target Customer: </label>
+                    <input type="text" name="audience" required placeholder="For instance: young office workers">
+                </div>
+
+                <div class="form-group">
+                    <label for="tone">Tone: </label>
+                    <select name="tone" id="tone">
+                        <optgroup label="🎯 Professional/Business-Oriented">
+                            <option value="professional">Professional</option>
+                            <option value="formal">Formal</option>
+                            <option value="corporate">Corporate</option>
+                            <option value="authoritative">Authoritative</option>
+                            <option value="trustworthy">Trustworthy</option>
+                            <option value="technical">Technical</option>
+                        </optgroup>
+                        <optgroup label="😄 Casual & Friendly">
+                            <option value="friendly">Friendly</option>
+                            <option value="conversational">Conversational</option>
+                            <option value="light-hearted">Light-hearted</option>
+                            <option value="playful">Playful</option>
+                            <option value="warm">Warm</option>
+                            <option value="approachable">Approachable</option>
+                        </optgroup>
+                        <optgroup label="🚀 Persuasive & Sales-Oriented">
+                            <option value="persuasive">Persuasive</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="confident">Confident</option>
+                            <option value="motivational">Motivational</option>
+                            <option value="inspirational">Inspirational</option>
+                            <option value="assertive">Assertive</option>
+                        </optgroup>
+                        <optgroup label="✨ Creative & Trendy">
+                            <option value="trendy">Trendy</option>
+                            <option value="quirky">Quirky</option>
+                            <option value="witty">Witty</option>
+                            <option value="youthful">Youthful</option>
+                            <option value="sassy">Sassy</option>
+                            <option value="humorous">Humorous</option>
+                        </optgroup>
+                        <optgroup label="🧠 Educational & Informative">
+                            <option value="informative">Informative</option>
+                            <option value="educational">Educational</option>
+                            <option value="instructive">Instructive</option>
+                            <option value="explanatory">Explanatory</option>
+                            <option value="straightforward">Straightforward</option>
+                        </optgroup>
+                        <optgroup label="💖 Emotional & Empathetic">
+                            <option value="empathetic">Empathetic</option>
+                            <option value="emotional">Emotional</option>
+                            <option value="heartfelt">Heartfelt</option>
+                            <option value="caring">Caring</option>
+                            <option value="soothing">Soothing</option>
+                            <option value="reassuring">Reassuring</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="platform">Target Media: </label>
+                    <select name="platform" id="platform">
+                        <optgroup label="📱 Social Media Platforms">
+                            <option value="Facebook">Facebook</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="TikTok">TikTok</option>
+                            <option value="Twitter">Twitter</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Snapchat">Snapchat</option>
+                            <option value="YouTube">YouTube</option>
+                        </optgroup>
+                        <optgroup label="🛒 E-Commerce Platforms">
+                            <option value="Amazon">Amazon</option>
+                            <option value="eBay">eBay</option>
+                            <option value="Etsy">Etsy</option>
+                            <option value="Shopify">Shopify</option>
+                        </optgroup>
+                        <optgroup label="🔍 Search & Display Ads">
+                            <option value="Google Ads">Google Ads</option>
+                            <option value="Bing Ads">Bing Ads</option>
+                        </optgroup>
+                        <optgroup label="👾 Community & Niche Platforms">
+                            <option value="Reddit">Reddit</option>
+                            <option value="Discord">Discord</option>
+                            <option value="Pinterest">Pinterest</option>
+                        </optgroup>
+                        <optgroup label="📧 Email & Messaging">
+                            <option value="Email Campaign">Email Campaign</option>
+                            <option value="WhatsApp Business">WhatsApp Business</option>
+                            <option value="Telegram Channel">Telegram Channel</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+            </div>
+
+            <!-- 图像生成选项 -->
+            <div class="form-section">
+                <h2>Picture Settings</h2>
+
+                <div class="form-group">
+                    <label for="art_style">Art Form: </label>
+                    <select name="art_style" id="art_style">
+                        <optgroup label="🎨 Traditional & Fine Art Styles">
+                            <option value="realistic">Realistic</option>
+                            <option value="watercolor">Watercolor</option>
+                            <option value="oil painting">Oil Painting</option>
+                            <option value="sketch">Sketch</option>
+                        </optgroup>
+                        <optgroup label="🧑‍🎤 Stylized & Pop Culture">
+                            <option value="cartoon">Cartoon</option>
+                            <option value="anime">Anime</option>
+                            <option value="pixel art">Pixel Art</option>
+                            <option value="comic">Comic</option>
+                        </optgroup>
+                        <optgroup label="🌐 Futuristic & Tech-Inspired">
+                            <option value="cyberpunk">Cyberpunk</option>
+                            <option value="synthwave">Synthwave</option>
+                            <option value="3D render">3D Render</option>
+                            <option value="vaporwave">Vaporwave</option>
+                        </optgroup>
+                        <optgroup label="✨ Modern & Minimal Aesthetics">
+                            <option value="minimalism">Minimalism</option>
+                            <option value="flat design">Flat Design</option>
+                            <option value="isometric">Isometric</option>
+                            <option value="line art">Line Art</option>
+                        </optgroup>
+                        <optgroup label="🌿 Natural & Organic Styles">
+                            <option value="boho">Boho</option>
+                            <option value="rustic">Rustic</option>
+                            <option value="earthy">Earthy</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="composition">Picture Structure: </label>
+                    <select name="composition" id="composition">
+                        <optgroup label="🔍 Focused Shots">
+                            <option value="close-up">Close-up</option>
+                            <option value="macro">Macro</option>
+                            <option value="product spotlight">Product Spotlight</option>
+                        </optgroup>
+                        <optgroup label="🌄 Contextual & Environmental">
+                            <option value="scene">Scene</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="environmental">Environmental</option>
+                            <option value="action shot">Action Shot</option>
+                            <option value="wide shot">Wide Shot</option>
+                        </optgroup>
+                        <optgroup label="🆚 Comparative & Informative">
+                            <option value="comparison">Comparison</option>
+                            <option value="before-after">Before / After</option>
+                            <option value="infographic">Infographic</option>
+                            <option value="multi-panel">Multi-Panel</option>
+                        </optgroup>
+                        <optgroup label="🧠 Conceptual & Abstract">
+                            <option value="conceptual">Conceptual</option>
+                            <option value="symbolic">Symbolic</option>
+                            <option value="abstract">Abstract</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+
+                <!-- 高级选项 -->
+                <div class="advanced-options">
+                    <label class="toggle-label">
+                        <input type="checkbox" name="enable_advanced"> Advanced Settings
+                    </label>
+                    
+                    <div class="advanced-fields" style="display:none;">
+                        <div class="form-group">
+                            <label>Main Color: </label>
+                            <input type="color" name="primary_color" value="#2d8cf0">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Text Layout: </label>
+                            <select name="text_overlay">
+                                <option value="none">None</option>
+                                <option value="floating">Floating</option>
+                                <option value="banner">Banner</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="generate-btn">Generate</button>
+        </form>
+    </div>
+
+    <script>
+        // 高级选项切换
+        document.querySelector('[name="enable_advanced"]').addEventListener('change', function(e) {
+            const fields = document.querySelector('.advanced-fields');
+            fields.style.display = e.target.checked ? 'block' : 'none';
+        });
+
+        // 表单提交提示
+        document.querySelector('.ad-form').addEventListener('submit', function() {
+            const btn = document.querySelector('.generate-btn');
+            btn.disabled = true;
+            btn.innerHTML = 'Generating... <div class="spinner"></div>';
+        });
+    </script>
+</body>
+</html>
