@@ -108,11 +108,3 @@ Try inputs like:
 This project is released for educational purposes under the MIT License.
 
 ---
-
-## 📬 Contact
-
-For questions or academic evaluation, please reach out to:
-
-**Student Name:** DING Haoran  
-**Project:** Personalized Ads AI Intelligent Generation  
-**Institution:** City University of Hong Kong
